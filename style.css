@@ -1054,3 +1054,218 @@
     z-index: 70;
 
 }
+/* =========================================================
+   MOBILE / TOUCH SUPPORT
+========================================================= */
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    overscroll-behavior: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+}
+
+button,
+#game-screen,
+#portal-container,
+.scp-999 {
+    -webkit-tap-highlight-color: transparent;
+}
+
+#game-screen {
+    touch-action: none;
+}
+
+@media (max-width: 600px) {
+
+    /* The custom mouse cursor is unnecessary on touch devices. */
+    #custom-cursor {
+        display: none;
+    }
+
+    body {
+        cursor: default;
+    }
+
+    /* Main menu */
+    #main-menu {
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    #main-menu h1 {
+        font-size: clamp(38px, 13vw, 72px);
+        letter-spacing: clamp(3px, 1.5vw, 8px);
+        text-align: center;
+        margin-bottom: 35px;
+    }
+
+    #play-button {
+        min-width: 160px;
+        min-height: 52px;
+        padding: 12px 28px;
+        font-size: 18px;
+        cursor: pointer;
+        touch-action: manipulation;
+    }
+
+    /* Game information */
+    #game-ui {
+        top: 10px;
+        left: 10px;
+        z-index: 60;
+    }
+
+    #resource-display {
+        padding: 7px 12px;
+        font-size: 16px;
+    }
+
+    #wave-display {
+        margin-top: 6px;
+        padding: 6px 10px;
+        font-size: 11px;
+        line-height: 1.45;
+    }
+
+    /* Smaller core keeps the battlefield usable on narrow screens. */
+    #core {
+        width: 90px;
+        height: 76px;
+        font-size: 18px;
+        letter-spacing: 2px;
+    }
+
+    #core-hp {
+        top: calc(50% + 58px);
+        font-size: 13px;
+        letter-spacing: 1px;
+    }
+
+    .portal {
+        width: 60px;
+        height: 60px;
+    }
+
+    /* Deployment controls become larger touch targets. */
+    #deploy-gunman,
+    #deploy-999 {
+        left: 10px;
+        right: 10px;
+        width: calc(50% - 15px);
+        min-height: 52px;
+        padding: 10px 8px;
+        font-size: 12px;
+        letter-spacing: 1px;
+        cursor: pointer;
+        box-sizing: border-box;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transform: none;
+        bottom: 10px;
+        touch-action: manipulation;
+    }
+
+    #deploy-gunman {
+        left: 10px;
+    }
+
+    #deploy-999 {
+        left: auto;
+        right: 10px;
+    }
+
+    /* Screens */
+    #death-screen,
+    #victory-screen,
+    #pause-screen {
+        padding: 20px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    #death-screen h1,
+    #pause-screen h1 {
+        font-size: clamp(30px, 9vw, 48px);
+        letter-spacing: 3px;
+    }
+
+    #victory-screen h1 {
+        font-size: clamp(26px, 8vw, 42px);
+        letter-spacing: 2px;
+    }
+
+    #death-score,
+    #final-score {
+        font-size: 22px;
+    }
+
+    #death-buttons,
+    #victory-buttons,
+    #pause-buttons {
+        width: min(100%, 360px);
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #restart-button,
+    #menu-button,
+    #victory-buttons button,
+    #resume-button,
+    #pause-menu-button {
+        width: 100%;
+        min-height: 52px;
+        padding: 12px 20px;
+        font-size: 15px;
+        cursor: pointer;
+        touch-action: manipulation;
+        box-sizing: border-box;
+    }
+
+    #victory-stats {
+        font-size: 14px;
+        letter-spacing: 1px;
+        margin-bottom: 25px;
+    }
+
+    /* Placement indicators stay visible and touch-friendly. */
+    .unit-placement-preview {
+        z-index: 100;
+    }
+
+    .unit-placement-boundary {
+        width: 100px;
+        height: 100px;
+    }
+
+    .core-placement-boundary {
+        width: 240px;
+        height: 240px;
+    }
+
+    .scp-999 {
+        cursor: pointer;
+    }
+}
+
+/* Very narrow phones */
+@media (max-width: 360px) {
+
+    #resource-display {
+        font-size: 14px;
+    }
+
+    #wave-display {
+        font-size: 10px;
+    }
+
+    #deploy-gunman,
+    #deploy-999 {
+        font-size: 10px;
+    }
+}

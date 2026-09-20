@@ -5015,3 +5015,70 @@ document.addEventListener(
 
     }
 );
+
+/* =========================================================
+   TOUCH PLACEMENT SUPPORT
+========================================================= */
+
+/*
+   Desktop placement already uses mousemove + click.
+   Touch screens do not produce useful mousemove events while
+   dragging a finger, so mirror the placement preview with
+   touchmove. The normal click event still handles the final tap.
+*/
+
+function updatePlacementFromTouch(event) {
+
+    if (
+        !placingGunman &&
+        !placing999
+    ) {
+
+        return;
+    }
+
+
+    if (
+        !event.touches ||
+        event.touches.length === 0
+    ) {
+
+        return;
+    }
+
+
+    event.preventDefault();
+
+
+    const touch =
+        event.touches[0];
+
+
+    const rect =
+        gameScreen.getBoundingClientRect();
+
+
+    const x =
+        touch.clientX -
+        rect.left;
+
+
+    const y =
+        touch.clientY -
+        rect.top;
+
+
+    updatePlacementPreview(
+        x,
+        y
+    );
+}
+
+
+gameScreen.addEventListener(
+    "touchmove",
+    updatePlacementFromTouch,
+    {
+        passive: false
+    }
+);
