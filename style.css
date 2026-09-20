@@ -1,0 +1,1056 @@
+    /* =========================
+    GENERAL
+    ========================= */
+
+    body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+
+    background: #0b0b0b;
+    color: white;
+    }
+
+
+    /* =========================
+    MAIN MENU
+    ========================= */
+
+    #main-menu {
+        width: 100vw;
+        height: 100vh;
+
+        display: flex;
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    /* =========================
+    TITLE
+    ========================= */
+
+    #main-menu h1 {
+        margin: 0 0 50px 0;
+
+        font-size: 72px;
+        font-weight: 700;
+        letter-spacing: 8px;
+    }
+
+
+    /* =========================
+    PLAY BUTTON
+    ========================= */
+
+    #play-button {
+        padding: 15px 70px;
+
+        background: transparent;
+        color: white;
+
+        border: 2px solid white;
+
+        font-size: 20px;
+        letter-spacing: 3px;
+
+        cursor: none;
+
+        transition: 0.2s;
+    }
+
+
+    /* Button hover */
+
+    #play-button:hover {
+        background: white;
+        color: black;
+    }
+
+    body {
+        cursor: none;
+    }
+
+    #custom-cursor {
+        position: fixed;
+
+        pointer-events: none;
+
+        z-index: 9999;
+    }
+
+    #cursor-image {
+        width: 30px;
+        height: 42px;
+
+        display: block;
+
+        transform: translate(-2px, -2px);
+    }
+
+    /* =========================
+    HOVER CURSOR
+    ========================= */
+
+    #custom-cursor.hover #cursor-image {
+        width: 50px;
+        height: 50px;
+
+        transform: translate(-50%, -50%);
+
+        animation: hover-spin 4s linear infinite;
+    }
+
+    @keyframes hover-spin {
+        from {
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+
+        to {
+            transform: translate(-50%, -50%) rotate(360deg);
+        }
+    }
+
+    /* =========================
+    GAME SCREEN
+    ========================= */
+
+    #game-screen {
+        display: none;
+
+        width: 100vw;
+        height: 100vh;
+
+        background-color: green;
+        background-size: 25%;
+        background-position: center;
+        background-repeat: repeat;
+
+        position: relative;
+    }
+
+
+    /* =========================
+    GAME UI
+    ========================= */
+
+    #game-ui {
+        position: absolute;
+
+        top: 20px;
+        left: 20px;
+    }
+
+    #resource-display {
+        padding: 10px 20px;
+
+        border: 2px solid white;
+
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    /* =========================
+   WAVE UI
+   ========================= */
+
+#wave-display {
+    margin-top: 10px;
+
+    padding: 8px 15px;
+
+    border: 2px solid white;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    line-height: 1.6;
+
+    letter-spacing: 1px;
+}
+
+    /* =========================
+    CORE
+    ========================= */
+
+    #core {
+        position: absolute;
+
+        top: 50%;
+        left: 50%;
+
+        transform: translate(-50%, -50%);
+
+        width: 120px;
+        height: 100px;
+
+        background: #202020;
+
+        clip-path: polygon(
+            25% 0%,
+            75% 0%,
+            100% 50%,
+            75% 100%,
+            25% 100%,
+            0% 50%
+        );
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-size: 24px;
+        font-weight: bold;
+        letter-spacing: 3px;
+    }
+
+    #core-hp {
+        position: absolute;
+
+        top: calc(50% + 75px);
+        left: 50%;
+
+        transform: translateX(-50%);
+
+        font-size: 16px;
+        font-weight: bold;
+        letter-spacing: 2px;
+
+        white-space: nowrap;
+    }
+
+    #portal-container {
+        position: absolute;
+
+        width: 100%;
+        height: 100%;
+
+        pointer-events: none;
+    }
+
+    .portal {
+        position: absolute;
+
+        width: 75px;
+        height: 75px;
+
+        transform: translate(-50%, -50%) scale(0);
+
+        pointer-events: none;
+
+        animation: portal-lifecycle 4s ease-in-out forwards;
+
+        z-index: 2;
+    }
+
+    @keyframes portal-lifecycle {
+
+    0% {
+        transform:
+            translate(-50%, -50%)
+            scale(0);
+    }
+
+    25% {
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+    }
+
+    75% {
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+    }
+
+    100% {
+        transform:
+            translate(-50%, -50%)
+            scale(0);
+    }
+}
+
+
+.portal-flipped {
+
+    transform:
+        translate(-50%, -50%)
+        scaleX(-1)
+        scale(0);
+
+    animation-name:
+        portal-lifecycle-flipped;
+}
+
+
+@keyframes portal-lifecycle-flipped {
+
+    0% {
+        transform:
+            translate(-50%, -50%)
+            scaleX(-1)
+            scale(0);
+    }
+
+    25% {
+        transform:
+            translate(-50%, -50%)
+            scaleX(-1)
+            scale(1);
+    }
+
+    75% {
+        transform:
+            translate(-50%, -50%)
+            scaleX(-1)
+            scale(1);
+    }
+
+    100% {
+        transform:
+            translate(-50%, -50%)
+            scaleX(-1)
+            scale(0);
+    }
+}   
+
+    .enemy-1 {
+        position: absolute;
+
+        width: 10px;
+        height: 10px;
+
+        background: red;
+
+        transform: translate(-50%, -50%);
+
+        pointer-events: none;
+
+        z-index: 1;
+    }
+
+    .enemy-healthbar {
+        position: absolute;
+
+        width: 25px;
+        height: 4px;
+
+        background: #333;
+
+        transform: translate(-50%, -50%);
+
+        pointer-events: none;
+
+        z-index: 3;
+    }
+
+    .enemy-health {
+        width: 100%;
+        height: 100%;
+
+        background: red;
+    }
+
+    /* =========================
+    DEFENSIVE UNIT
+    ========================= */
+
+    .gunman {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: blue;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        z-index: 4;
+    }
+
+    .gunman-projectile {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: yellow;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        z-index: 5;
+    }
+
+    .scp-999 {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: orange;
+    border: 2px solid #ffcc66;
+    clip-path: polygon(
+        25% 0%,
+        75% 0%,
+        100% 25%,
+        100% 75%,
+        75% 100%,
+        25% 100%,
+        0% 75%,
+        0% 25%
+    );
+    transform: translate(-50%, -50%);
+    pointer-events: auto;
+    cursor: none;
+    z-index: 30;
+}
+
+    
+    /* =========================
+    DEPLOY BUTTON
+    ========================= */
+
+#deploy-gunman {
+    position: fixed;
+
+    bottom: 20px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    padding: 10px 15px;
+
+    background: transparent;
+    color: white;
+
+    border: 2px solid white;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: none;
+
+    transition: 0.2s;
+
+    z-index: 50;
+}
+
+#deploy-gunman:hover,
+#deploy-gunman.selected {
+    background: white;
+    color: black;
+}
+
+#deploy-999 {
+    position: fixed;
+
+    bottom: 75px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    padding: 10px 15px;
+
+    background: transparent;
+    color: white;
+
+    border: 2px solid white;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: none;
+
+    transition: 0.2s;
+
+    z-index: 50;
+}
+
+#deploy-999:hover,
+#deploy-999.selected {
+    background: white;
+    color: black;
+}
+
+.scp-999.selected {
+    outline: 3px solid red;
+    outline-offset: 4px;
+}
+
+.scp-999-buff-range {
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background: rgba(255, 165, 0, 0.12);
+
+    border: 2px solid rgba(255, 165, 0, 0.35);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+    /* =========================
+   DEATH SCREEN
+   ========================= */
+
+#death-screen {
+    display: none;
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background: #33333344;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 100;
+}
+
+#death-screen h1 {
+    margin: 0 0 25px 0;
+
+    font-size: 48px;
+
+    letter-spacing: 6px;
+}
+
+#death-score {
+    margin-top: 0;
+
+    font-size: 28px;
+
+    font-weight: bold;
+}
+
+#death-high-score {
+    margin-top: 10px;
+
+    margin-bottom: 35px;
+
+    font-size: 16px;
+
+    letter-spacing: 2px;
+}
+
+#death-buttons {
+    display: flex;
+
+    gap: 20px;
+}
+
+#restart-button,
+#menu-button {
+    padding: 15px 40px;
+
+    background: transparent;
+    color: white;
+
+    border: 2px solid white;
+
+    font-size: 18px;
+    letter-spacing: 3px;
+
+    cursor: none;
+
+    transition: 0.2s;
+}
+
+#restart-button:hover,
+#menu-button:hover {
+    background: white;
+    color: black;
+}
+
+   /* =========================
+   RP REWARD POPUP
+   ========================= */
+
+.rp-popup {
+    position: absolute;
+
+    color: #ffd900;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    pointer-events: none;
+
+    z-index: 20;
+
+    transform: translate(-50%, -50%);
+
+    animation:
+        rp-popup-animation
+        1s
+        ease-out
+        forwards;
+}
+
+@keyframes rp-popup-animation {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.7);
+    }
+
+    20% {
+        opacity: 1;
+
+        transform:
+            translate(-50%, -70%)
+            scale(1);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(-50%, -150%)
+            scale(1);
+    }
+}
+
+/* =========================
+   VICTORY SCREEN
+   ========================= */
+
+#victory-screen {
+    display: none;
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background: #33333344;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 100;
+}
+
+
+#victory-screen h1 {
+    margin: 0 0 30px 0;
+
+    font-size: 42px;
+
+    letter-spacing: 4px;
+}
+
+
+#final-score {
+    font-size: 28px;
+
+    font-weight: bold;
+
+    margin-bottom: 15px;
+}
+
+
+#high-score-display {
+    font-size: 18px;
+
+    margin-bottom: 30px;
+
+    letter-spacing: 2px;
+}
+
+
+#victory-stats {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    text-align: center;
+
+    margin-bottom: 35px;
+
+    font-size: 16px;
+
+    letter-spacing: 2px;
+}
+
+
+#victory-buttons {
+    display: flex;
+
+    gap: 15px;
+}
+
+
+#victory-buttons button {
+    padding: 10px 20px;
+
+    background: transparent;
+
+    color: white;
+
+    border: 2px solid white;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    cursor: none;
+
+    transition: 0.2s;
+}
+
+#victory-buttons button:hover {
+    background: white;
+
+    color: black;
+}
+
+
+/* =========================
+   DEATH SCORE
+   ========================= */
+
+#death-score {
+    margin-top: 20px;
+
+    font-size: 24px;
+
+    font-weight: bold;
+}
+
+
+#death-high-score {
+    margin-top: 10px;
+
+    font-size: 16px;
+
+    letter-spacing: 2px;
+}
+
+#pause-screen {
+    display: none;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background: rgba(0, 0, 0, 0.75);
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 90;
+}
+
+#pause-screen h1 {
+    margin: 0 0 35px 0;
+
+    font-size: 48px;
+    letter-spacing: 6px;
+}
+
+#pause-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+#resume-button,
+#pause-menu-button {
+    padding: 15px 40px;
+
+    background: transparent;
+    color: white;
+
+    border: 2px solid white;
+
+    font-size: 18px;
+    letter-spacing: 3px;
+
+    cursor: none;
+
+    transition: 0.2s;
+}
+
+#resume-button:hover,
+#pause-menu-button:hover {
+    background: white;
+    color: black;
+}
+
+.bst-label {
+    position: absolute;
+
+    left: 50%;
+
+    top: -18px;
+
+    transform: translateX(-50%);
+
+    color: orange;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    pointer-events: none;
+
+    white-space: nowrap;
+
+    z-index: 40;
+}
+
+.scp-999-waypoint {
+    position: absolute;
+
+    width: 20px;
+    height: 20px;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(45deg);
+
+    pointer-events: none;
+
+    z-index: 35;
+}
+
+.scp-999-waypoint::before,
+.scp-999-waypoint::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    background: red;
+
+    transform:
+        translate(-50%, -50%);
+}
+
+.scp-999-waypoint::before {
+    width: 24px;
+    height: 3px;
+}
+
+.scp-999-waypoint::after {
+    width: 3px;
+    height: 24px;
+}
+
+/* =========================================================
+   UNIT PLACEMENT PREVIEW
+========================================================= */
+
+.unit-placement-preview {
+
+    position: absolute;
+
+    transform:
+        translate(-50%, -50%);
+
+    pointer-events: none;
+
+    z-index: 100;
+
+    opacity: 0.45;
+
+}
+
+
+/* =========================
+   GUNMAN PREVIEW
+========================= */
+
+.gunman-placement-preview {
+
+    width: 20px;
+
+    height: 20px;
+
+    background: #4da6ff;
+
+    border: 2px solid white;
+
+}
+
+
+/* =========================
+   SCP-999 PREVIEW
+========================= */
+
+.scp999-placement-preview {
+
+    width: 30px;
+
+    height: 30px;
+
+    background: orange;
+
+    border: 2px solid white;
+
+    clip-path: polygon(
+        25% 0%,
+        75% 0%,
+        100% 25%,
+        100% 75%,
+        75% 100%,
+        25% 100%,
+        0% 75%,
+        0% 25%
+    );
+
+}
+
+
+/* =========================================================
+   PREVIEW SPACING BOUNDARY
+========================================================= */
+
+.unit-placement-boundary {
+
+    position: absolute;
+
+    width: 100px;
+
+    height: 100px;
+
+    transform:
+        translate(-50%, -50%);
+
+    border: 2px solid red;
+
+    border-radius: 50%;
+
+    background: rgba(
+        255,
+        0,
+        0,
+        0.08
+    );
+
+    pointer-events: none;
+
+    z-index: 90;
+
+}
+
+
+/* =========================
+   INVALID PREVIEW
+========================= */
+
+.unit-placement-preview.invalid {
+
+    opacity: 0.65;
+
+    background: red;
+
+}
+
+
+.unit-placement-boundary.invalid {
+
+    background: rgba(
+        255,
+        0,
+        0,
+        0.20
+    );
+
+}
+
+
+/* =========================================================
+   EXISTING UNIT BOUNDARIES
+========================================================= */
+
+.unit-placement-existing-boundary {
+
+    position: absolute;
+
+    width: 100px;
+
+    height: 100px;
+
+    transform:
+        translate(-50%, -50%);
+
+    border: 2px solid red;
+
+    border-radius: 50%;
+
+    background: rgba(
+        255,
+        0,
+        0,
+        0.05
+    );
+
+    pointer-events: none;
+
+    z-index: 80;
+
+}
+
+
+/* =========================================================
+   CORE EXCLUSION BOUNDARY
+========================================================= */
+
+.core-placement-boundary {
+
+    position: absolute;
+
+    width: 240px;
+
+    height: 240px;
+
+    transform:
+        translate(-50%, -50%);
+
+    border: 2px solid red;
+
+    border-radius: 50%;
+
+    background: rgba(
+        255,
+        0,
+        0,
+        0.05
+    );
+
+    pointer-events: none;
+
+    z-index: 70;
+
+}

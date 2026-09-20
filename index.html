@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>XK Calamity</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="custom-cursor">
+
+        <img
+            id="cursor-image"
+            src="assets/cursor/cursor.png"
+            alt=""
+        >
+
+    </div>
+
+
+    <!-- =====================================================
+         MAIN MENU
+    ====================================================== -->
+
+    <main id="main-menu">
+
+        <h1>
+            XK Calamity
+        </h1>
+
+        <button id="play-button">
+            PLAY
+        </button>
+
+    </main>
+
+
+    <!-- =====================================================
+         GAME SCREEN
+    ====================================================== -->
+
+    <main id="game-screen">
+
+
+        <!-- =========================
+             GAME UI
+        ========================== -->
+
+        <div id="game-ui">
+
+
+            <div id="resource-display">
+
+                RP:
+                <span id="research-points">
+                    0
+                </span>
+
+            </div>
+
+
+            <div id="wave-display">
+
+                WAVE:
+                <span id="wave-number">
+                    1
+                </span>
+
+                <br>
+
+                ENEMIES:
+                <span id="wave-killed">
+                    0
+                </span>
+
+                /
+
+                <span id="wave-total">
+                    0
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =========================
+             CORE
+        ========================== -->
+
+        <div id="core">
+            CORE
+        </div>
+
+
+        <div id="core-hp">
+
+            HP:
+
+            <span id="core-health">
+                100
+            </span>
+
+            / 100
+
+        </div>
+
+
+        <!-- =========================
+             PORTALS / ENTITIES
+        ========================== -->
+
+        <div id="portal-container"></div>
+
+
+        <!-- =========================
+             DEPLOYMENT BUTTONS
+        ========================== -->
+
+        <button id="deploy-gunman">
+
+            GUNMAN — 5 RP
+
+        </button>
+
+
+        <button id="deploy-999">
+
+            SCP-999 — 50 RP
+
+        </button>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         DEATH SCREEN
+    ====================================================== -->
+
+    <div id="death-screen">
+
+        <h1>
+            CORE BREACHED
+        </h1>
+
+
+        <div id="death-score">
+
+            SCORE:
+
+            <span id="death-score-value">
+                0
+            </span>
+
+        </div>
+
+
+        <div id="death-high-score">
+
+            HIGH SCORE:
+
+            <span id="death-high-score-value">
+                0
+            </span>
+
+        </div>
+
+
+        <div id="death-buttons">
+
+            <button id="restart-button">
+                RESTART
+            </button>
+
+            <button id="menu-button">
+                MAIN MENU
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         VICTORY SCREEN
+    ====================================================== -->
+
+    <div id="victory-screen">
+
+        <h1>
+            CONTAINMENT SUCCESSFUL
+        </h1>
+
+
+        <div id="final-score">
+
+            SCORE:
+
+            <span id="score-value">
+                0
+            </span>
+
+        </div>
+
+
+        <div id="high-score-display">
+
+            HIGH SCORE:
+
+            <span id="high-score-value">
+                0
+            </span>
+
+        </div>
+
+
+        <div id="victory-stats">
+
+            <div>
+
+                TIME:
+
+                <span id="final-time">
+                    0
+                </span>s
+
+            </div>
+
+
+            <div>
+
+                UNITS PLACED:
+
+                <span id="final-units">
+                    0
+                </span>
+
+            </div>
+
+
+            <div>
+
+                CORE BREACHES:
+
+                <span id="final-lives">
+                    0
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div id="victory-buttons">
+
+            <button id="victory-restart-button">
+                RESTART
+            </button>
+
+            <button id="victory-menu-button">
+                MAIN MENU
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         PAUSE SCREEN
+    ====================================================== -->
+
+    <div id="pause-screen">
+
+        <h1>
+            PAUSED
+        </h1>
+
+
+        <div id="pause-buttons">
+
+            <button id="resume-button">
+                RESUME
+            </button>
+
+
+            <button id="pause-menu-button">
+                MAIN MENU
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
