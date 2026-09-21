@@ -1,160 +1,163 @@
-    /* =========================
-    GENERAL
-    ========================= */
+/* =========================
+GENERAL
+========================= */
 
-    body {
+body {
     margin: 0;
     width: 100vw;
     height: 100vh;
 
     background: #0b0b0b;
     color: white;
+}
+
+
+/* =========================
+MAIN MENU
+========================= */
+
+#main-menu {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* =========================
+TITLE
+========================= */
+
+#main-menu h1 {
+    margin: 0 0 50px 0;
+
+    font-size: 72px;
+    font-weight: 700;
+    letter-spacing: 8px;
+}
+
+
+/* =========================
+PLAY BUTTON
+========================= */
+
+#play-button {
+    padding: 15px 70px;
+
+    background: transparent;
+    color: white;
+
+    border: 2px solid white;
+
+    font-size: 20px;
+    letter-spacing: 3px;
+
+    cursor: none;
+
+    transition: 0.2s;
+}
+
+
+/* Button hover */
+
+#play-button:hover {
+    background: white;
+    color: black;
+}
+
+body {
+    cursor: none;
+}
+
+#custom-cursor {
+    position: fixed;
+
+    pointer-events: none;
+
+    z-index: 9999;
+}
+
+#cursor-image {
+    width: 30px;
+    height: 42px;
+
+    display: block;
+
+    transform: translate(-2px, -2px);
+}
+
+
+/* =========================
+HOVER CURSOR
+========================= */
+
+#custom-cursor.hover #cursor-image {
+    width: 50px;
+    height: 50px;
+
+    transform: translate(-50%, -50%);
+
+    animation: hover-spin 4s linear infinite;
+}
+
+@keyframes hover-spin {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
     }
 
-
-    /* =========================
-    MAIN MENU
-    ========================= */
-
-    #main-menu {
-        width: 100vw;
-        height: 100vh;
-
-        display: flex;
-        flex-direction: column;
-
-        justify-content: center;
-        align-items: center;
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
     }
+}
 
 
-    /* =========================
-    TITLE
-    ========================= */
+/* =========================
+GAME SCREEN
+========================= */
 
-    #main-menu h1 {
-        margin: 0 0 50px 0;
+#game-screen {
+    display: none;
 
-        font-size: 72px;
-        font-weight: 700;
-        letter-spacing: 8px;
-    }
+    width: 100vw;
+    height: 100vh;
 
+    background-color: green;
+    background-size: 25%;
+    background-position: center;
+    background-repeat: repeat;
 
-    /* =========================
-    PLAY BUTTON
-    ========================= */
-
-    #play-button {
-        padding: 15px 70px;
-
-        background: transparent;
-        color: white;
-
-        border: 2px solid white;
-
-        font-size: 20px;
-        letter-spacing: 3px;
-
-        cursor: none;
-
-        transition: 0.2s;
-    }
+    position: relative;
+}
 
 
-    /* Button hover */
+/* =========================
+GAME UI
+========================= */
 
-    #play-button:hover {
-        background: white;
-        color: black;
-    }
+#game-ui {
+    position: absolute;
 
-    body {
-        cursor: none;
-    }
+    top: 20px;
+    left: 20px;
+}
 
-    #custom-cursor {
-        position: fixed;
+#resource-display {
+    padding: 10px 20px;
 
-        pointer-events: none;
+    border: 2px solid white;
 
-        z-index: 9999;
-    }
-
-    #cursor-image {
-        width: 30px;
-        height: 42px;
-
-        display: block;
-
-        transform: translate(-2px, -2px);
-    }
-
-    /* =========================
-    HOVER CURSOR
-    ========================= */
-
-    #custom-cursor.hover #cursor-image {
-        width: 50px;
-        height: 50px;
-
-        transform: translate(-50%, -50%);
-
-        animation: hover-spin 4s linear infinite;
-    }
-
-    @keyframes hover-spin {
-        from {
-            transform: translate(-50%, -50%) rotate(0deg);
-        }
-
-        to {
-            transform: translate(-50%, -50%) rotate(360deg);
-        }
-    }
-
-    /* =========================
-    GAME SCREEN
-    ========================= */
-
-    #game-screen {
-        display: none;
-
-        width: 100vw;
-        height: 100vh;
-
-        background-color: green;
-        background-size: 25%;
-        background-position: center;
-        background-repeat: repeat;
-
-        position: relative;
-    }
+    font-size: 20px;
+    font-weight: bold;
+}
 
 
-    /* =========================
-    GAME UI
-    ========================= */
-
-    #game-ui {
-        position: absolute;
-
-        top: 20px;
-        left: 20px;
-    }
-
-    #resource-display {
-        padding: 10px 20px;
-
-        border: 2px solid white;
-
-        font-size: 20px;
-        font-weight: bold;
-    }
-
-    /* =========================
-   WAVE UI
-   ========================= */
+/* =========================
+WAVE UI
+========================= */
 
 #wave-display {
     margin-top: 10px;
@@ -171,81 +174,82 @@
     letter-spacing: 1px;
 }
 
-    /* =========================
-    CORE
-    ========================= */
 
-    #core {
-        position: absolute;
+/* =========================
+CORE
+========================= */
 
-        top: 50%;
-        left: 50%;
+#core {
+    position: absolute;
 
-        transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
 
-        width: 120px;
-        height: 100px;
+    transform: translate(-50%, -50%);
 
-        background: #202020;
+    width: 120px;
+    height: 100px;
 
-        clip-path: polygon(
-            25% 0%,
-            75% 0%,
-            100% 50%,
-            75% 100%,
-            25% 100%,
-            0% 50%
-        );
+    background: #202020;
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    clip-path: polygon(
+        25% 0%,
+        75% 0%,
+        100% 50%,
+        75% 100%,
+        25% 100%,
+        0% 50%
+    );
 
-        font-size: 24px;
-        font-weight: bold;
-        letter-spacing: 3px;
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    #core-hp {
-        position: absolute;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
 
-        top: calc(50% + 75px);
-        left: 50%;
+#core-hp {
+    position: absolute;
 
-        transform: translateX(-50%);
+    top: calc(50% + 75px);
+    left: 50%;
 
-        font-size: 16px;
-        font-weight: bold;
-        letter-spacing: 2px;
+    transform: translateX(-50%);
 
-        white-space: nowrap;
-    }
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 2px;
 
-    #portal-container {
-        position: absolute;
+    white-space: nowrap;
+}
 
-        width: 100%;
-        height: 100%;
+#portal-container {
+    position: absolute;
 
-        pointer-events: none;
-    }
+    width: 100%;
+    height: 100%;
 
-    .portal {
-        position: absolute;
+    pointer-events: none;
+}
 
-        width: 75px;
-        height: 75px;
+.portal {
+    position: absolute;
 
-        transform: translate(-50%, -50%) scale(0);
+    width: 75px;
+    height: 75px;
 
-        pointer-events: none;
+    transform: translate(-50%, -50%) scale(0);
 
-        animation: portal-lifecycle 4s ease-in-out forwards;
+    pointer-events: none;
 
-        z-index: 2;
-    }
+    animation: portal-lifecycle 4s ease-in-out forwards;
 
-    @keyframes portal-lifecycle {
+    z-index: 2;
+}
+
+@keyframes portal-lifecycle {
 
     0% {
         transform:
@@ -314,71 +318,73 @@
             scaleX(-1)
             scale(0);
     }
-}   
+}
 
-    .enemy-1 {
-        position: absolute;
 
-        width: 10px;
-        height: 10px;
+.enemy-1 {
+    position: absolute;
 
-        background: red;
+    width: 10px;
+    height: 10px;
 
-        transform: translate(-50%, -50%);
+    background: red;
 
-        pointer-events: none;
+    transform: translate(-50%, -50%);
 
-        z-index: 1;
-    }
+    pointer-events: none;
 
-    .enemy-healthbar {
-        position: absolute;
+    z-index: 1;
+}
 
-        width: 25px;
-        height: 4px;
+.enemy-healthbar {
+    position: absolute;
 
-        background: #333;
+    width: 25px;
+    height: 4px;
 
-        transform: translate(-50%, -50%);
+    background: #333;
 
-        pointer-events: none;
+    transform: translate(-50%, -50%);
 
-        z-index: 3;
-    }
+    pointer-events: none;
 
-    .enemy-health {
-        width: 100%;
-        height: 100%;
+    z-index: 3;
+}
 
-        background: red;
-    }
+.enemy-health {
+    width: 100%;
+    height: 100%;
 
-    /* =========================
-    DEFENSIVE UNIT
-    ========================= */
+    background: red;
+}
 
-    .gunman {
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        background: blue;
-        transform: translate(-50%, -50%);
-        pointer-events: none;
-        z-index: 4;
-    }
 
-    .gunman-projectile {
-        position: absolute;
-        width: 10px;
-        height: 10px;
-        background: yellow;
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
-        pointer-events: none;
-        z-index: 5;
-    }
+/* =========================
+DEFENSIVE UNIT
+========================= */
 
-    .scp-999 {
+.gunman {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: blue;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 4;
+}
+
+.gunman-projectile {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: yellow;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 5;
+}
+
+.scp-999 {
     position: absolute;
     width: 30px;
     height: 30px;
@@ -400,10 +406,10 @@
     z-index: 30;
 }
 
-    
-    /* =========================
-    DEPLOY BUTTON
-    ========================= */
+
+/* =========================
+DEPLOY BUTTON
+========================= */
 
 #deploy-gunman {
     position: fixed;
@@ -494,9 +500,10 @@
     z-index: -1;
 }
 
-    /* =========================
-   DEATH SCREEN
-   ========================= */
+
+/* =========================
+DEATH SCREEN
+========================= */
 
 #death-screen {
     display: none;
@@ -573,9 +580,10 @@
     color: black;
 }
 
-   /* =========================
-   RP REWARD POPUP
-   ========================= */
+
+/* =========================
+RP REWARD POPUP
+========================= */
 
 .rp-popup {
     position: absolute;
@@ -627,9 +635,10 @@
     }
 }
 
+
 /* =========================
-   VICTORY SCREEN
-   ========================= */
+VICTORY SCREEN
+========================= */
 
 #victory-screen {
     display: none;
@@ -729,8 +738,8 @@
 
 
 /* =========================
-   DEATH SCORE
-   ========================= */
+DEATH SCORE
+========================= */
 
 #death-score {
     margin-top: 20px;
@@ -748,6 +757,7 @@
 
     letter-spacing: 2px;
 }
+
 
 #pause-screen {
     display: none;
@@ -802,6 +812,7 @@
     background: white;
     color: black;
 }
+
 
 .bst-label {
     position: absolute;
@@ -867,8 +878,9 @@
     height: 24px;
 }
 
+
 /* =========================================================
-   UNIT PLACEMENT PREVIEW
+UNIT PLACEMENT PREVIEW
 ========================================================= */
 
 .unit-placement-preview {
@@ -888,7 +900,7 @@
 
 
 /* =========================
-   GUNMAN PREVIEW
+GUNMAN PREVIEW
 ========================= */
 
 .gunman-placement-preview {
@@ -905,7 +917,7 @@
 
 
 /* =========================
-   SCP-999 PREVIEW
+SCP-999 PREVIEW
 ========================= */
 
 .scp999-placement-preview {
@@ -933,16 +945,12 @@
 
 
 /* =========================================================
-   PREVIEW SPACING BOUNDARY
+PREVIEW SPACING BOUNDARY
 ========================================================= */
 
 .unit-placement-boundary {
 
     position: absolute;
-
-    width: 100px;
-
-    height: 100px;
 
     transform:
         translate(-50%, -50%);
@@ -966,7 +974,7 @@
 
 
 /* =========================
-   INVALID PREVIEW
+INVALID PREVIEW
 ========================= */
 
 .unit-placement-preview.invalid {
@@ -991,16 +999,12 @@
 
 
 /* =========================================================
-   EXISTING UNIT BOUNDARIES
+EXISTING UNIT BOUNDARIES
 ========================================================= */
 
 .unit-placement-existing-boundary {
 
     position: absolute;
-
-    width: 100px;
-
-    height: 100px;
 
     transform:
         translate(-50%, -50%);
@@ -1024,7 +1028,7 @@
 
 
 /* =========================================================
-   CORE EXCLUSION BOUNDARY
+CORE EXCLUSION BOUNDARY
 ========================================================= */
 
 .core-placement-boundary {
@@ -1054,8 +1058,10 @@
     z-index: 70;
 
 }
+
+
 /* =========================================================
-   MOBILE / TOUCH SUPPORT
+MOBILE / TOUCH SUPPORT
 ========================================================= */
 
 html,
@@ -1079,6 +1085,21 @@ button,
 #game-screen {
     touch-action: none;
 }
+
+
+/* =========================
+TRUE GAME PAUSE
+========================= */
+
+/* Freeze CSS-driven battlefield animations while paused. */
+#game-screen.game-paused .portal {
+    animation-play-state: paused !important;
+}
+
+#game-screen.game-paused .rp-popup {
+    animation-play-state: paused !important;
+}
+
 
 @media (max-width: 600px) {
 
@@ -1238,11 +1259,6 @@ button,
         z-index: 100;
     }
 
-    .unit-placement-boundary {
-        width: 100px;
-        height: 100px;
-    }
-
     .core-placement-boundary {
         width: 240px;
         height: 240px;
@@ -1253,7 +1269,9 @@ button,
     }
 }
 
+
 /* Very narrow phones */
+
 @media (max-width: 360px) {
 
     #resource-display {
