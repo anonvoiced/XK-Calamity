@@ -5761,7 +5761,7 @@ function xkFinalCreateBossHealthUI(boss, x, y) {
 
     const label = document.createElement("div");
     label.className = "xk-final-breach-label";
-    label.textContent = "BREACH ENTITY — HP 200 / 200";
+    label.textContent = "BREACH ENTITY — HP 500 / 500";
     label.style.left = `${x}px`;
     label.style.top = `${y - 48}px`;
     portalContainer.appendChild(label);
@@ -5782,8 +5782,8 @@ function xkFinalSpawnBreachBoss(x, y) {
     }
 
     boss.classList.add("xk-final-breach-boss");
-    boss.health = 200;
-    boss.maxHealth = 200;
+    boss.health = 500;
+    boss.maxHealth = 500;
     boss.damage = 5;
     boss.attackInterval = 1000;
     boss.attackRemaining = 1000;
