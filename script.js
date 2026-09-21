@@ -3672,19 +3672,6 @@ updateWaveDisplay();
 researchPointsDisplay.textContent = researchPoints;
 coreHealthDisplay.textContent = coreHealth;
 
-/* =========================================================
-   XK CALAMITY — FEATURE OVERHAUL
-   - pre-round deployment phase
-   - manual / automatic rounds
-   - round popups 1–10
-   - selected SCP-999 indicator + deselect
-   - enemy nearest-allied targeting
-   - gunman HP
-   - live score + high score
-   - score breakdown / legend
-   - mobile pause + mobile cursor removal
-========================================================= */
-
 let xkRoundPrepTimeout = null;
 let xkRoundPrepRemaining = 10000;
 let xkRoundPrepNextTick = 0;
@@ -4158,9 +4145,6 @@ function xkBeginRoundPreparation() {
     xkRoundPrepNextTick = performance.now() + xkRoundPrepRemaining;
     xkSetRoundPopup(currentWave);
     xkUpdateRoundPrepUI();
-
-    // The deployment countdown always runs. AUTO only decides whether the round
-    // launches automatically when the countdown reaches zero.
     xkScheduleRoundPrep();
 }
 
@@ -5419,8 +5403,6 @@ function winGame() {
     }, true);
 })();
 
-// Do not allow battlefield clicks to place/move units while paused.
-// Placement state itself remains intact.
 gameScreen.addEventListener("click", function (event) {
     if (gamePaused && !event.target.closest("button")) {
         event.stopImmediatePropagation();
@@ -5434,16 +5416,6 @@ gameScreen.addEventListener("contextmenu", function (event) {
     event.preventDefault();
     xkDeselect999();
 });
-
-/* =========================================================
-   XK CALAMITY — FINAL POLISH + BREACH MODE
-   - fixes UI overlap
-   - SCP-inspired button colors
-   - responsive/mobile HUD layout
-   - persistent local browser unlocks
-   - BREACH main-menu mode after normal Round 10 victory
-   - Round 10 Breach boss: spinning pentagon, 80 HP, 25 px/s
-========================================================= */
 
 let xkFinalBreachMode = false;
 let xkFinalBreachBoss = null;
@@ -6163,14 +6135,7 @@ xkFinalEnsureBreachButton();
             event.stopImmediatePropagation();
 
 
-            /*
-                ADMIN TEST
 
-                Force the game into a clean
-                active state, then use the
-                EXACT SAME endGame() pipeline
-                as a real victory.
-            */
 
             gameOver = false;
             gameActive = true;
@@ -6179,14 +6144,6 @@ xkFinalEnsureBreachButton();
             currentWave = 10;
             xkCompletedWaves = 10;
             xkRoundPrepActive = false;
-
-
-            /*
-                Do NOT manually show the
-                victory screen here.
-
-                Let endGame() do it.
-            */
 
             endGame(true);
 
